@@ -40,7 +40,5 @@ namespace RainbowLobby
             
             base.OnDisabled();
         }
-
-        
     }
 }
