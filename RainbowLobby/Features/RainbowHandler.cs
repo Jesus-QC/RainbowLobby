@@ -12,8 +12,6 @@ namespace RainbowLobby.Features
 
         public void OnWaitingForPlayers()
         {
-            Log.Info(_rainbowCoroutine.IsRunning);
-            
             if (!_rainbowCoroutine.IsRunning)
                 _rainbowCoroutine = Timing.RunCoroutine(RainbowCoroutine());
         }
