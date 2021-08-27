@@ -30,11 +30,23 @@ namespace RainbowLobby.Features
                 var hexColor = $"#{r:X2}{g:X2}{b:X2}";
 
                 if (r > 0 && b == 0)
-                    r -= 3;g += 3;
+                {
+                    r -= 3;
+                    g += 3;
+                }
+
                 if (g > 0 && r == 0)
-                    g -= 3; b += 3;
+                {
+                    g -= 3;
+                    b += 3;
+                }
+
                 if (b > 0 && g == 0)
-                    b -= 3; r += 3;
+                {
+                    b -= 3;
+                    r += 3;
+                }
+                    
                 
                 Map.ShowHint(MainClass.Cfg.WaitingText.Replace("%rainbow%", hexColor), 0.8f);
                 
