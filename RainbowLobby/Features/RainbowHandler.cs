@@ -8,6 +8,12 @@ namespace RainbowLobby.Features
 {
     public class RainbowHandler
     {
+        public RainbowHandler(Config config)
+        {
+            _config = config;
+        }
+        
+        private readonly Config _config;
         private static CoroutineHandle _rainbowCoroutine;
 
         public void OnWaitingForPlayers()
@@ -25,30 +31,36 @@ namespace RainbowLobby.Features
         private IEnumerator<float> RainbowCoroutine()
         {
             int r = 255, g = 0, b = 0;
+            
+            var speed = 3;
+            
+            if(_config.ColorSpeed >= 0 && _config.ColorSpeed < 9)
+                 speed = Config.Speeds[_config.ColorSpeed];
+            
             for (;;)
             {
                 var hexColor = $"#{r:X2}{g:X2}{b:X2}";
 
                 if (r > 0 && b == 0)
                 {
-                    r -= 3;
-                    g += 3;
+                    r -= speed;
+                    g += speed;
                 }
 
                 if (g > 0 && r == 0)
                 {
-                    g -= 3;
-                    b += 3;
+                    g -= speed;
+                    b += speed;
                 }
 
                 if (b > 0 && g == 0)
                 {
-                    b -= 3;
-                    r += 3;
+                    b -= speed;
+                    r += speed;
                 }
                     
                 
-                Map.ShowHint(MainClass.Cfg.WaitingText.Replace("%rainbow%", hexColor), 0.8f);
+                Map.ShowHint(_config.WaitingText.Replace("%rainbow%", hexColor), 0.8f);
                 
                 yield return Timing.WaitForSeconds(0.5f);
             }

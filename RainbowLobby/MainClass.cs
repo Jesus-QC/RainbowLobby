@@ -11,17 +11,14 @@ namespace RainbowLobby
         public override string Author { get; } = "Jesus-QC";
         public override string Name { get; } = "RainbowLobby";
         public override string Prefix { get; } = "RainbowLobby";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 0, 1);
         public override Version RequiredExiledVersion { get; } = new Version(3, 0, 0);
-
-        public static Config Cfg { get; private set; }
+        
         private RainbowHandler _handler;
         
         public override void OnEnabled()
         {
-            Cfg = Config;
-
-            _handler = new RainbowHandler();
+            _handler = new RainbowHandler(Config);
             
             Exiled.Events.Handlers.Server.WaitingForPlayers += _handler.OnWaitingForPlayers;
             Exiled.Events.Handlers.Server.RoundStarted += _handler.OnRoundStarted;
@@ -36,8 +33,6 @@ namespace RainbowLobby
             
             _handler = null;
 
-            Cfg = null;
-            
             base.OnDisabled();
         }
     }
