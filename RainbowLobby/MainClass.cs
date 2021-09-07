@@ -11,7 +11,6 @@ namespace RainbowLobby
         public override string Author { get; } = "Jesus-QC";
         public override string Name { get; } = "RainbowLobby";
         public override string Prefix { get; } = "RainbowLobby";
-        public override Version Version { get; } = new Version(1, 0, 1);
         public override Version RequiredExiledVersion { get; } = new Version(3, 0, 0);
         
         private RainbowHandler _handler;
