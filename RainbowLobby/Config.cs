@@ -6,7 +6,7 @@ namespace RainbowLobby
 {
     public class Config : IConfig 
     {
-        public static List<int> Speeds = new List<int>() // Numbers that 255 are divisible by
+        public static readonly List<int> Speeds = new List<int>() // Numbers that 255 are divisible by
         {
             0, 1, 3, 5, 15, 17, 51, 85, 255
         };
